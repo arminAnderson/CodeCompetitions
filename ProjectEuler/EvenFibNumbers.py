@@ -11,5 +11,6 @@ while b < num:
     temp = a
     a = b
     b += temp
+    print(temp)
 
 print(sum)
