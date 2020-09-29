@@ -45,15 +45,3 @@ for one in range(0, 200):
                                 break
     
 print(sum)
-
-coins = [1, 2, 5, 10, 20, 50, 100, 200]
-sum = 0
-def R(v, depth):
-    if v == 0:
-        sum += 1
-        return
-    if v < 0:
-        return
-    
-
-print(R(200, 7))
