@@ -46,8 +46,8 @@ int main()
     A();
     cout << "B: ";
     for(int i = 0; i < s; ++i) { dp[i] = 0; }
-    cout << B(200, 7) << endl;
+    cout << B(10, 2) << endl;
     cout << "C: ";
-    cout << F(200, 7) << endl;
+    cout << F(10, 2) << endl;
     return 0;
 }
