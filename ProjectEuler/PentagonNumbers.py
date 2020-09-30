@@ -10,7 +10,7 @@ def GeneratePentNums():
 pent = GeneratePentNums()
 print(92 in checker)
 
-for a in range(1000000):
-    for b in range(a + 1, 1000000):
+for a in range(1000):
+    for b in range(a, 1000):
         if pent[a] + pent[b] in checker and pent[b] - pent[a] in checker:
             print("{} {}".format(a, b))
