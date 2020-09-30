@@ -1,8 +1,12 @@
-panSet = set()
+import math
 
+def GetDigitCount(num):
+    return int(math.log10(num))+1
+
+panSet = set()    
 def IsPandigital(arr):
     panSet.clear()
-    panSet.add(0)
+    panSet.add('0')
     for t in arr:
         if t in panSet:
             return False
@@ -10,27 +14,17 @@ def IsPandigital(arr):
             panSet.add(t)
     return len(panSet) == 10
 
-longest = 0
-
-for i in range(1, 10000000):
-    arr = []
-    for j in range(1, 10):
-        temp = []
-        num = i * j
-        while num > 0:
-            temp.append(num % 10)
-            num //= 10
-        k = len(temp) - 1
-        while k != -1 and len(arr) < 9:
-            arr.append(temp[k])
-            k -= 1
-        if len(arr) == 9:
+temp = ""
+for i in range(1, 10000):
+    temp = ""
+    j = 0
+    for j in range(1, 10//GetDigitCount(i) + 1):
+        jMax = j
+        temp += str(i * j)
+        if len(temp) >= 9:
             break
-    if IsPandigital(arr):
-        l = 0
-        for v in arr:
-            l *= 10
-            l += v
-        longest = max(longest, l)
+    if j > 1:
+        if len(temp) == 9 and IsPandigital(temp):
+            print("{} {} {}".format(temp, jMax, i))
 
-print(longest)
+
