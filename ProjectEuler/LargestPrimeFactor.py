@@ -21,8 +21,3 @@ while i * i <= num:
     i += 1
 
 print(int(largest))
-    
-
-
-
-
