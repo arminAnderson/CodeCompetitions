@@ -38,7 +38,6 @@ def GetScore(arr):
     largestCard = -1
     largestGroup = 0
     groups = []
-    
 
     i = len(arr) - 1
     while i >= 0:
@@ -94,7 +93,7 @@ def GetScore(arr):
         return [101, arr]
     elif largestGroup == 2:
         #print("PAIR")
-        return [100, arr]
+        return [100, groups]
     else:
         #print(largestCard + 2)
         return [largestCard]
@@ -102,7 +101,8 @@ def GetScore(arr):
 
 f = open("inputFiles/Poker.txt", "r")
 
-iters = 5
+ret = 0
+
 for line in f.readlines():
     handA = []
     handB = []
@@ -115,15 +115,32 @@ for line in f.readlines():
     
     a = GetScore(handA)
     b = GetScore(handB)
-    if a > b:
-        print("A WINS")
-    elif b > a:
-        print("B WINS")
+
+    while a[0] == b[0]:
+        #print("TIE: " + str(a[0]) + " " + line)
+        code = a[0] % 100
+        if code == 0:
+            #print("{} | {}".format(a[1][0], b[1][0]))
+            if a[1][0] > b[1][0]:
+                b[0] = 0
+            elif a[1][0] < b[1][0]:
+                a[0] = 0
+            else:
+                handA[a[1][0]][0] = 0
+                handB[b[1][0]][0] = 0
+                a = GetScore(handA)
+                b = GetScore(handB)
+                continue
+        break
+
+    if a[0] > b[0]:
+        #print("A WINS")
+        ret += 1
+        pass
+    elif a[0] < b[0]:
+        #print("B WINS")
+        pass
     else:
-        #TODO THIS PART with return type
         print("TIE")
 
-    #print("{} | {}".format(handA, line[:14].split(" ")))
-    if iters == 0:
-        break
-    iters -= 1
+print(ret)
