@@ -53,12 +53,10 @@ def GetLexi(arr):
         t = [d['s'], d['e'], d['n'], d['d']]
         b = [d['m'], d['o'], d['r'], d['e']]
         r = Add(t, b)
-        if r[0] == d['m'] and r[4] == d['y']:
+        if d['s'] != 0 and d['m'] != 0 and r[0] == d['m'] and r[1] == d['o'] and r[2] == d['n'] and r[3] == d['e'] and r[4] == d['y']:
             print("{} {} {}".format(t, b, r))
             return
         
-        
-    
 array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 GetLexi(array)
     
